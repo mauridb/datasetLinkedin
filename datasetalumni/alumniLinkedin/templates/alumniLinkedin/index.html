@@ -13,13 +13,16 @@
 <div class="container">
 
     <h1 class="text-center">homepage</h1>
-    <h3>INSERT IN CSV FILE THE BIGDIVE'S Student:</h3>
+    <h3 class="col-xs">INSERT IN CSV FILE THE BIGDIVE'S Student:</h3>
     <form class="form-group" action="#" method="post">
-        FIRST-NAME: <input class="form-control" type="text" name="name" placeholder="Type your first name .."><br />
-        LAST-NAME: <input class="form-control" type="text" name="surname" placeholder="Type your last name .."><br />
-        AGE: <input class="form-control" type="text" name="age" placeholder="Type your age .."><br />
-        JOB_PLACEMENT: <input class="form-control" type="text" name="job" placeholder="Type your job placement .."><br />
-        <input class="btn btn-success" type="submit" value="Add on CSV"><br />
+    {% csrf_token %}
+        FIRST-NAME: <input class="col-xs form-control" type="text" name="name" placeholder="Type your first name .." required><br />
+        LAST-NAME: <input class="col-xs form-control" type="text" name="surname" placeholder="Type your last name .." required><br />
+        JOB_PLACEMENT: <input class="col-xs form-control" type="text" name="job" placeholder="Type your job placement .." required><br />
+        COMPANY: <input class="col-xs form-control" type="text" name="company" placeholder="Type name of your country .." required><br />
+        NATION: <input class="col-xs form-control" type="text" name="nationality" placeholder="Type your nationality .." required><br />
+        COUNTRY: <input class="col-xs form-control" type="text" name="country" placeholder="Type your country.." required><br />
+        <input class="col-xs btn btn-success" type="submit" value="Add on CSV"><br />
     </form>
 
 
