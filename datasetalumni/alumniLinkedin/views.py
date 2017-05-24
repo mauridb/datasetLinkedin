@@ -2,9 +2,10 @@
 from __future__ import unicode_literals
 
 import singleton as singleton
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 import csv
 import sys
+from unicodecsv import DictReader
 
 reload(sys)
 sys.setdefaultencoding('utf-8')
@@ -41,6 +42,31 @@ def index(request):
                  'COUNTRY': request.POST.get('country')})
 
     return render(request, 'alumniLinkedin/index.html', {})
+
+
+def reader(request):
+    if request.method == 'POST':
+        # print 'sono in post'
+        # print request.POST.get('src')
+        # read csv file
+        elem_founded = []
+
+        with open('datasetBigDive.csv') as csvfile:
+            dataset = csv.reader(csvfile)
+            for row in dataset:
+                # print row
+                for i in row:
+                    # print i
+                    if i == request.POST.get('src'):
+                        print row
+                        elem_founded.append(row)
+
+        print elem_founded
+        context = {
+            'wanted': elem_founded,
+        }
+        return render(request, 'alumniLinkedin/reader.html', context)
+    return render(request, 'alumniLinkedin/reader.html', {})
 
 
 def call_api(request):
